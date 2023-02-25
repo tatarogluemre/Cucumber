@@ -34,8 +34,9 @@ public class GoogleStepDefinitions {
         Assert.assertTrue(Driver.getDriver().getTitle().contains("iphone"));
 
     }
-    @And("close the applications")
+    @Then("close the applications")
     public void close_the_applications(){
+
         Driver.closeDriver();
     }
     @When("kullanici tesla icin arama yapar")
@@ -46,4 +47,15 @@ public class GoogleStepDefinitions {
     public void sonuclarda_tesla_oldugunu_dogrular() {
         Assert.assertTrue(Driver.getDriver().getTitle().contains("tesla"));
     }
+
+    @When("kullanici {string} icin arama yapar")
+    public void kullanici_icin_arama_yapar(String string) {
+        googlePages.searchBox.sendKeys(string, Keys.ENTER);
+
+    }
+    @Then("kullanici sonuclarda {string} oldugunu dogrular.")
+    public void kullanici_sonuclarda_oldugunu_dogrular(String string) {
+        Assert.assertTrue(Driver.getDriver().getTitle().contains(string));
+    }
+
 }
