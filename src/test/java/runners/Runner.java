@@ -12,13 +12,13 @@ import org.junit.runner.RunWith;
                 "json:target/json-reports/cucumber.json",
                 "junit:target/xml-report/cucumber.xml"
         },
-        monochrome=true,
-        features = "./src/test/resources/features",
-        glue = "stepdefinitions",
-        tags = "@personel_olustur" ,   //tags olmazsa tüm scenario lar çalışır tags varsa sadece o tag in scenario su çalışır.
-        dryRun = false  //dryRun=false dryRun yokmuş gibi normal şekilde çalışır.
-                       // dryRun = true Yeni bir step eklendiğinde sadece stepdefinitions ları oluşturmak için kullanılır.
-                     //            kullnılma sebebi zamandan tasarruf etmek içindir.
+        monochrome=true, //raporların konsolda okunaklı çıkması için
+        features = "./src/test/resources/features",  //feature folder
+        glue = {"stepdefinitions","hooks"}, //stepdefinitions , hooks folder
+        tags = "@excel_automation" ,   // tags olmazsa tüm scenario lar çalışır tags varsa sadece o tag in scenario su çalışır.
+        dryRun = false   //dryRun=false dryRun yokmuş gibi normal şekilde çalışır.
+                        // dryRun = true Yeni bir step eklendiğinde sadece stepdefinitions ları oluşturmak için kullanılır.
+                       //            kullnılma sebebi zamandan tasarruf etmek içindir.
 
 )
 public class Runner {
