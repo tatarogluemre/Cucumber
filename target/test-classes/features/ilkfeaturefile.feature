@@ -1,4 +1,4 @@
-@google_search
+@google_search @test_runner
 Feature: ilk feature file
 
   Background: Google_sayfasına_git

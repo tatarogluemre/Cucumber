@@ -21,11 +21,11 @@ public class ExcelStepDefinitions {
     List<Map<String, String>> excelDatalari;
 
     @Given("kullanici {string} bilgileri ile giris yapar")
-    public void kullanici_bilgileri_ile_giris_yapar(String string) throws IOException {
-        Driver.getDriver().get("https://www.bluerentalcars.com/");
+    public void kullanici_bilgileri_ile_giris_yapar(String sayfaAdi) throws IOException {
+        Driver.getDriver().get(ConfigReader.getProperty("blue_rental_url"));
         blueRentalHomePage = new BlueRentalHomePage();
         blueRentalLoginPage = new BlueRentalLoginPage();
-        excelUtils = new ExcelUtils("src/test/resources/testdata/mysmoketestdata.xlsx", "customer_info");
+        excelUtils = new ExcelUtils("src/test/resources/testdata/mysmoketestdata.xlsx", sayfaAdi);
         excelDatalari = excelUtils.getDataList();
         for (Map<String, String> data : excelDatalari) {
             blueRentalHomePage.login.click();
@@ -33,9 +33,10 @@ public class ExcelStepDefinitions {
             blueRentalLoginPage.password.sendKeys(data.get("password"));
             blueRentalLoginPage.loginButton.click();
             ReusableMethods.waitFor(2);
-            blueRentalHomePage.userID.click();
-            ReusableMethods.waitFor(2);
             Assert.assertTrue(blueRentalHomePage.userID.isDisplayed());
+            ReusableMethods.waitFor(2);
+            ReusableMethods.getScreenshot("Login");
+            blueRentalHomePage.userID.click();
             blueRentalHomePage.logOutLink.click();
             ReusableMethods.waitFor(2);
             blueRentalHomePage.okButton.click();

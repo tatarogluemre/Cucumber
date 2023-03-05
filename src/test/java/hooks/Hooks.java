@@ -9,19 +9,19 @@ import utilities.Driver;
 
 public class Hooks {
     /*
-    Herbir Scenario yada Scenario Outline dan önce çalışmöasını iştediğimiz metotlar
+    Herbir Scenario yada Scenario Outline dan önce çalışmasını istediğimiz metotlar
     @Before ve @After metotlarını içerir
     Burda önemli olan raporlama işleminin ekran görüntüleri eklenmesi Hooks yardımıyla yapılır.
      */
 
     @Before
-    public void setUpScenarios(){
+    public void setUpScenarios() {
         System.out.println("Before Metot");
     }
 
 
     @After
-    public void tearDownScenarios(Scenario scenario){
+    public void tearDownScenarios(Scenario scenario) {
         System.out.println("Afher Metotu");
 //        Eger bir Scenario FAIL ederse, ekran goruntusunu al ve rapora ekle
         if (scenario.isFailed()) {

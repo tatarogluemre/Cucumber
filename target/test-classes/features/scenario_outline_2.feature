@@ -1,6 +1,6 @@
 @personel_olustur
 Feature: personel_olustur
-
+    @smoke
   Scenario Outline: TC01_Personel_Olustur
      Given kullanici "https://editor.datatables.net" gider
      When kullanici new butonuna tiklar
